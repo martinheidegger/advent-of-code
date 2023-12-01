@@ -1,0 +1,10 @@
+#!/bin/bash
+
+input="$(pwd)/encrypted/$1.zip"
+if [ -d "$1" ]; then
+  echo "Folder $1 already exists. Move it!"
+  exit 1
+fi
+mkdir -p "$1"
+cd "$1";
+unzip "$input"

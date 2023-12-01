@@ -1,0 +1,11 @@
+#!/bin/bash
+
+if [ ! -d "$1" ]; then
+  echo "$1 does not exist."
+  exit 1
+fi
+
+output="$(pwd)/encrypted/$1.zip"
+mkdir -p $(dirname "$output")
+cd "$1"
+zip -eP "$2" "$output" "." -r
