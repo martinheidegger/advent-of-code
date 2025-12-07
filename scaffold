@@ -1,0 +1,27 @@
+#!/bin/bash
+
+cd `dirname $0`
+
+IFS='/' read -ra PARTS <<< "$1"
+YEAR=${PARTS[0]}
+DAY=${PARTS[1]}
+if [[ "$YEAR" == "" || "$DAY" == "" ]]; then
+    echo "Usage: ./scaffold YYYY/DD" >&2
+    exit 1
+fi
+echo "YEAR=${YEAR}"
+echo "DAY=${DAY}"
+mkdir -p "$YEAR"
+TARGET="${YEAR}/${DAY}"
+if [[ -d "$TARGET" ]]; then
+    echo "[ERROR] Folder '$TARGET' already exists!" >&2
+    exit 1
+fi
+INPUT_TARGET="input/${TARGET}"
+mkdir -p $INPUT_TARGET
+touch "${INPUT_TARGET}/input"
+touch "${INPUT_TARGET}/test"
+cp -r template $TARGET
+code "${TARGET}/index.mjs"
+code "${INPUT_TARGET}/input"
+code "${INPUT_TARGET}/test"
