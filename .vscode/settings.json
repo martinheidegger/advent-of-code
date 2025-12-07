@@ -1,0 +1,14 @@
+{
+    "editor.formatOnSave": true,
+    "typescript.format.enable": true,
+    "editor.tabSize": 2,
+    "editor.defaultFormatter": "prettier.prettier-vscode",
+    "prettier.documentSelectors": [
+        "*.mjs",
+        "*.md",
+        "*.sh"
+    ],
+    "[javascript]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    }
+}
